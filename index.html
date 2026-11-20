@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Kontak Proyek</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f3f4f6;
+      color: #1f2937;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 16px;
+    }
+
+    .form-container {
+      background: #ffffff;
+      max-width: 580px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      padding: 32px 28px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .form-header {
+      margin-bottom: 24px;
+    }
+
+    .form-header h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .form-header p {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    .optional-tag {
+      font-size: 12px;
+      font-weight: normal;
+      color: #9ca3af;
+      margin-left: 4px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #1f2937;
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .helper-text {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 5px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: #2563eb;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      margin-top: 10px;
+    }
+
+    .btn-submit:hover {
+      background-color: #1d4ed8;
+    }
+
+    .btn-submit:active {
+      transform: scale(0.99);
+    }
+
+    /* Alert / Feedback message */
+    .alert-success {
+      display: none;
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      background-color: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <div class="form-header">
+      <h2>Hubungi Kami</h2>
+      <p>Silakan isi formulir di bawah ini untuk memulai konsultasi proyek Anda.</p>
+    </div>
+
+    <form id="projectForm" method="POST" action="">
+      <!-- Nama Anda -->
+      <div class="form-group">
+        <label for="nama">Nama Anda <span style="color: #ef4444;">*</span></label>
+        <input type="text" id="nama" name="nama" class="form-control" placeholder="Contoh: Budi Santoso" required>
+      </div>
+
+      <!-- E-mail -->
+      <div class="form-group">
+        <label for="email">E-mail <span style="color: #ef4444;">*</span></label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="nama@email.com" required>
+      </div>
+
+      <!-- Nomor WhatsApp -->
+      <div class="form-group">
+        <label for="whatsapp">Nomor WhatsApp</label>
+        <input type="tel" id="whatsapp" name="whatsapp" class="form-control" placeholder="08xxxxxxxxxx">
+        <div class="helper-text">Opsional. Hanya kami pakai untuk membalas.</div>
+      </div>
+
+      <!-- Perusahaan (opsional) -->
+      <div class="form-group">
+        <label for="perusahaan">Perusahaan <span class="optional-tag">(opsional)</span></label>
+        <input type="text" id="perusahaan" name="perusahaan" class="form-control" placeholder="Nama perusahaan atau organisasi">
+      </div>
+
+      <!-- Apa yang Anda butuhkan? -->
+      <div class="form-group">
+        <label for="layanan">Apa yang Anda butuhkan?</label>
+        <select id="layanan" name="layanan" class="form-control">
+          <option value="">Pilih layanan (opsional)</option>
+          <option value="Pembuatan Website / Web App">Pembuatan Website / Web App</option>
+          <option value="Aplikasi Mobile (Android/iOS)">Aplikasi Mobile (Android/iOS)</option>
+          <option value="Desain UI/UX">Desain UI/UX</option>
+          <option value="SEO & Digital Marketing">SEO & Digital Marketing</option>
+          <option value="Maintenance & Support">Maintenance & Support</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+      </div>
+
+      <!-- Perkiraan budget -->
+      <div class="form-group">
+        <label for="budget">Perkiraan budget</label>
+        <select id="budget" name="budget" class="form-control">
+          <option value="">Pilih kisaran (opsional)</option>
+          <option value="< Rp 5 Juta">&lt; Rp 5 Juta</option>
+          <option value="Rp 5 Juta - Rp 15 Juta">Rp 5 Juta - Rp 15 Juta</option>
+          <option value="Rp 15 Juta - Rp 30 Juta">Rp 15 Juta - Rp 30 Juta</option>
+          <option value="> Rp 30 Juta">&gt; Rp 30 Juta</option>
+          <option value="Belum ditentukan / Fleksibel">Belum ditentukan / Fleksibel</option>
+        </select>
+      </div>
+
+      <!-- Ceritakan proyeknya -->
+      <div class="form-group">
+        <label for="proyek">Ceritakan proyeknya <span style="color: #ef4444;">*</span></label>
+        <textarea id="proyek" name="proyek" class="form-control" placeholder="Tuliskan gambaran, tujuan, atau kebutuhan proyek Anda..." required></textarea>
+      </div>
+
+      <!-- Tombol Kirim -->
+      <button type="submit" class="btn-submit">Kirim Pesan</button>
+
+      <!-- Feedback pesan terkirim -->
+      <div id="alertSuccess" class="alert-success">
+        ✓ Terima kasih! Pesan Anda telah berhasil dikirim.
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Contoh penanganan form via JavaScript
+    const form = document.getElementById('projectForm');
+    const alertSuccess = document.getElementById('alertSuccess');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault(); // Mencegah reload halaman
+
+      // Mengambil data input
+      const data = {
+        nama: document.getElementById('nama').value,
+        email: document.getElementById('email').value,
+        whatsapp: document.getElementById('whatsapp').value,
+        perusahaan: document.getElementById('perusahaan').value,
+        layanan: document.getElementById('layanan').value,
+        budget: document.getElementById('budget').value,
+        proyek: document.getElementById('proyek').value
+      };
+
+      console.log('Data Formulir Terkirim:', data);
+
+      // Tampilkan pesan sukses dan reset formulir
+      alertSuccess.style.display = 'block';
+      form.reset();
+
+      // Sembunyikan notifikasi setelah 5 detik
+      setTimeout(() => {
+        alertSuccess.style.display = 'none';
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
